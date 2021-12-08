@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class EscapeRoomGUI {
         JPanel panel;
-
+    static  JButton createNewProblem;
 
 
 
@@ -20,6 +20,9 @@ public class EscapeRoomGUI {
         JButton Sub = new JButton("Add");
         JButton Multi = new JButton("Divide");
         JButton Divide = new JButton("Multiply");
+        JLabel enterResult;
+
+
 
         panel = new EscapePanel();
         double Num1 = Math.random();
