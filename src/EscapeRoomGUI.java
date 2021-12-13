@@ -2,68 +2,99 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
-import java.util.Random;
 
 public class EscapeRoomGUI {
-        JPanel panel;
-    static  JButton createNewProblem;
+    JPanel panel;
+    static JButton createNewProblem;
+    static JTextField enterAnswer1;
 
 
+    static JLabel displayProblem;
 
-    public EscapeRoomGUI(){
+    public EscapeRoomGUI() {
         JFrame frame = new JFrame("EscapeRoom");
-        frame.setSize(700,500);
+        frame.setSize(700, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
-        JButton Add = new JButton("Subtract");
-        JButton Sub = new JButton("Add");
-        JButton Multi = new JButton("Divide");
-        JButton Divide = new JButton("Multiply");
-        JLabel enterResult;
+        JLabel TheKey = new JLabel("Hint: Everything is reversed here");
+        JLabel displayProblem = new JLabel("15 + 5");
 
+        JButton createNewProblem = new JButton("Next Problem");
+        JButton add = new JButton("Addition");
+        JButton sub = new JButton("Subtraction");
+        JButton multi = new JButton("Multiply");
+        JButton div = new JButton("Divide");
+
+
+        add.addActionListener(new EscapePanel.Addition());
+        sub.addActionListener(new EscapePanel.Subtraction());
+        multi.addActionListener(new EscapePanel.Multiplication());
+        div.addActionListener(new EscapePanel.Division());
+
+        TheKey.setBounds(100, 25, 100, 75);
 
 
         panel = new EscapePanel();
-        double Num1 = Math.random();
-        double Num2 = Math.random();
-
-
-        panel.add(Add);
-        panel.add(Sub);
-        panel.add(Multi);
-        panel.add(Divide);
-
+        panel.add(TheKey);
+        panel.add(displayProblem);
+        panel.add(add);
+        panel.add(sub);
+        panel.add(multi);
+        panel.add(div);
+        panel.add(createNewProblem);
         frame.add(panel);
+        panel.updateUI();
         frame.setVisible(true);
     }
 
-private class EscapePanel extends JPanel{
 
-        public EscapePanel(){
-            setBackground(Color.BLUE);
+    private static class EscapePanel extends JPanel {
+
+        public EscapePanel() {
+            setBackground(Color.lightGray);
         }
-    public void paintComponent(Graphics g){
-
-        super.paintComponent(g);
 
 
-    }
-}
+        public void paintComponent(Graphics g) {
 
-    public static double Addition(double Num1, double Num2){
-        return Num1 + Num2;
-    }
+            super.paintComponent(g);
 
-    public static double Division(double Num1, double Num2){
-        return Num1 / Num2;
-    }
 
-    public static double Multiply(double Num1, double Num2){
-        return Num1 * Num2;
-    }
+        }
 
-    public static double Subtract(double Num1, double Num2){
-        return Num1 - Num2;
+        private static class Addition implements ActionListener {
+
+            public void actionPerformed(ActionEvent actionEvent) {
+
+                    JOptionPane.showMessageDialog(null, "You are Wrong!!");
+
+            }
+
+
+        }
+
+        private static class Subtraction implements ActionListener {
+
+            public void actionPerformed(ActionEvent actionEvent) {
+                JOptionPane.showMessageDialog(null, "You are Correct!!");
+            }
+        }
+
+        private static class Multiplication implements ActionListener {
+
+            public void actionPerformed(ActionEvent actionEvent) {
+                JOptionPane.showMessageDialog(null, "You are Wrong!!");
+            }
+
+        }
+
+        private static class Division implements ActionListener {
+
+            public void actionPerformed(ActionEvent actionEvent) {
+                JOptionPane.showMessageDialog(null, "You are Wrong!!");
+            }
+
+
+        }
     }
 }
