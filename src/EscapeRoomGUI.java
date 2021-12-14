@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class EscapeRoomGUI {
     JPanel panel;
     static JButton createNewProblem;
-    static JTextField enterAnswer1;
+    static int enterAnswer1;
 
 
     static JLabel displayProblem;
@@ -25,7 +25,7 @@ public class EscapeRoomGUI {
         JButton multi = new JButton("Multiply");
         JButton div = new JButton("Divide");
 
-
+        createNewProblem.addActionListener(new EscapePanel.LastButton());
         add.addActionListener(new EscapePanel.Addition());
         sub.addActionListener(new EscapePanel.Subtraction());
         multi.addActionListener(new EscapePanel.Multiplication());
@@ -51,7 +51,7 @@ public class EscapeRoomGUI {
     private static class EscapePanel extends JPanel {
 
         public EscapePanel() {
-            setBackground(Color.lightGray);
+            setBackground(Color.CYAN);
         }
 
 
@@ -95,6 +95,19 @@ public class EscapeRoomGUI {
             }
 
 
+        }
+
+        private static class LastButton implements ActionListener {
+
+            public void actionPerformed(ActionEvent actionEvent){
+                enterAnswer1 = Integer.parseInt(JOptionPane.showInputDialog("What's the answer to the problem?"));
+                if (enterAnswer1 == 10){
+                    JOptionPane.showMessageDialog(null,"You are correct congrats on escaping!!!!");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null,"YOU'RE WRONG LEARNED THE RULES BUCKO!!");
+                }
+            }
         }
     }
 }
