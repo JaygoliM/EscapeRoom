@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 public class EscapeRoomGUI {
     JPanel panel;
-    static JButton createNewProblem;
+    static JRadioButton  add,sub,multi,div;
     static int enterAnswer1;
 
 
@@ -19,7 +19,7 @@ public class EscapeRoomGUI {
         JLabel TheKey = new JLabel("Hint: Everything is reversed here");
         JLabel displayProblem = new JLabel("15 + 5");
 
-        JButton createNewProblem = new JButton("Next Problem");
+        JButton createNewProblem = new JButton("Next Question");
         JButton add = new JButton("Addition");
         JButton sub = new JButton("Subtraction");
         JButton multi = new JButton("Multiply");
@@ -30,6 +30,9 @@ public class EscapeRoomGUI {
         sub.addActionListener(new EscapePanel.Subtraction());
         multi.addActionListener(new EscapePanel.Multiplication());
         div.addActionListener(new EscapePanel.Division());
+
+
+
 
         TheKey.setBounds(100, 25, 100, 75);
 
@@ -45,6 +48,8 @@ public class EscapeRoomGUI {
         frame.add(panel);
         panel.updateUI();
         frame.setVisible(true);
+        createNewProblem.setVisible(true);
+
     }
 
 
@@ -77,6 +82,7 @@ public class EscapeRoomGUI {
 
             public void actionPerformed(ActionEvent actionEvent) {
                 JOptionPane.showMessageDialog(null, "You are Correct!!");
+
             }
         }
 
@@ -107,6 +113,7 @@ public class EscapeRoomGUI {
                 else {
                     JOptionPane.showMessageDialog(null,"YOU'RE WRONG LEARNED THE RULES BUCKO!!");
                 }
+
             }
         }
     }
